@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-form-field>
+    <mat-select 
+      placeholder="Choose country"
+      (selectionChange)='loadCities()'
+      [(ngModel)]='selectedCountryId'
+      #countrySelector>
+        <mat-option 
+          *ngFor="let country of countries"
+          [value]="country.id">
+          {{country.name}}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select 
+      placeholder="Choose city"
+      [disabled]='!countrySelector.value'
+      [(ngModel)]='selectedCityId'>
+        <mat-option *ngFor="let city of cities" [(value)]="city.id">
+          {{city.name}}
+        </mat-option>
+    </mat-select>
+  </mat-form-field> 
+</div>
